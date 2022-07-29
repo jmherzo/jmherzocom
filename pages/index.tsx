@@ -6,7 +6,7 @@ const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>jmherzo</title>
+        <title>Bienvenido a jmherzo</title>
         <meta name="description" content="Welcome to jmherzo.com" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
