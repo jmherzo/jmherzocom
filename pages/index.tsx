@@ -11,7 +11,6 @@ const Home: NextPage = () => {
         <meta name="description" content="Welcome to jmherzo.com" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar />
       <Landing />
     </>
   );
