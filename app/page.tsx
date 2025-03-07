@@ -120,7 +120,7 @@ export default function Home() {
               </Button>
             </Link>
             <Link
-              href="https://github.com"
+              href="https://github.com/jmherzo"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -618,7 +618,7 @@ export default function Home() {
                     asChild
                   >
                     <Link
-                      href="https://github.com"
+                      href="https://github.com/jmherzo"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -651,26 +651,6 @@ export default function Home() {
             rights reserved.
           </p>
           <div className="flex gap-4">
-            <Link
-              href="https://linkedin.com/in/jmherzo/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button variant="ghost" size="icon">
-                <Linkedin className="h-4 w-4" />
-                <span className="sr-only">LinkedIn</span>
-              </Button>
-            </Link>
-            <Link
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button variant="ghost" size="icon">
-                <Github className="h-4 w-4" />
-                <span className="sr-only">GitHub</span>
-              </Button>
-            </Link>
             <Link href="mailto:jesus.herzo@outlook.com">
               <Button variant="ghost" size="icon">
                 <Mail className="h-4 w-4" />
