@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -20,7 +19,6 @@ import {
   Code,
   Briefcase,
   User,
-  FileCode2,
   Layers,
   Zap,
   GraduationCap,
@@ -201,10 +199,11 @@ export default function Home() {
               .Net, and Java. I have worked with Firebase, AWS and Google Cloud.
             </p>
             <p className="text-lg text-muted-foreground">
-              I'm passionate about building scalable, performant web
+              {/* eslint-disable-next-line*/}
+              `I'm passionate about building scalable, performant web
               applications with clean, maintainable code. My experience spans
               from frontend development to backend services, with a focus on
-              creating exceptional user experiences.
+              creating exceptional user experiences.`
             </p>
           </div>
         </section>
@@ -685,6 +684,7 @@ export default function Home() {
   );
 }
 
+// eslint-disable-next-line
 function Phone(props: any) {
   return (
     <svg
