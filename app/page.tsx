@@ -31,7 +31,7 @@ import {
 } from "lucide-react";
 
 export default function Home() {
-  const [theme, setTheme] = useState("system");
+  const [theme, setTheme] = useState("light");
   const [copied, setCopied] = useState(false);
 
   // Initialize theme from localStorage on component mount
@@ -159,7 +159,18 @@ export default function Home() {
                 Jesus Manuel Hernandez Zozaya
               </h1>
               <p className="mb-8 text-2xl font-medium text-primary">
-                Senior Software Engineer @ PayPal
+                Senior Software Engineer
+                <Link
+                  href="https://x.com/paypal"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-secondary"
+                >
+                  {" "}
+                  <span className="mb-8 text-2xl font-medium text-primary">
+                    @PayPal
+                  </span>
+                </Link>
               </p>
               <p className="mx-auto mb-8 max-w-2xl text-xl text-muted-foreground">
                 Full Stack Developer proficient in JavaScript/TypeScript, React
@@ -265,10 +276,17 @@ export default function Home() {
                   description: [
                     "Worked and architected new solutions for the Digital Wallet team within PayPal, which oversees adding cards, adding banks and transferring funds within PayPal globally.",
                     "Created, with a multidisciplinary team, a new way to add a card on PayPal web, supporting all markets globally and giving the ability to any consumer team to add a card as a plug and play experience, increasing the performance by 2x and revamping the client-side architecture.",
-                    "Architected the APIs and client-side views for transferring funds on a new cross functional project called Money Pools, where customers could create pools of money to share with friends, winning new customers and increasing overall revenue.",
+                    "Architected the APIs and client-side views for transferring funds on a new cross functional project called Money Pools, where customers could create pools of money to share with friends, winning new customers and bringing +30M on Total Payments Volume.",
                   ],
-                  technologies:
-                    "React, Typescript, NextJS, Redux, NodeJS, Jenkins, Github",
+                  technologies: [
+                    "React",
+                    "Typescript",
+                    "NextJS",
+                    "Redux",
+                    "NodeJS",
+                    "Jenkins",
+                    "Github",
+                  ],
                 },
                 {
                   role: "Front End Tech Lead",
@@ -278,8 +296,16 @@ export default function Home() {
                     "Guided the frontend engineering decisions for the Customer team inside autozone.com. Planned new work, architecture of new features, coordination with business, releasing new versions to production and communication with stakeholders.",
                     "Designed and developed with the customer team, the frontend implementation of the key products recommendation feature inside a product details page. This feature increased weekly sales by 20%.",
                   ],
-                  technologies:
-                    "React, Typescript, NextJS, Redux, NodeJS, Jenkins, Gitlab, TanStack-query",
+                  technologies: [
+                    "React",
+                    "Typescript",
+                    "NextJS",
+                    "Redux",
+                    "NodeJS",
+                    "Jenkins",
+                    "Gitlab",
+                    "TanStack-query",
+                  ],
                 },
                 {
                   role: "Systems Engineer",
@@ -289,7 +315,13 @@ export default function Home() {
                     "Enhanced and created complex frontend flows as well as new features for autozone.com. Improving flows like sign in, create account, rewards program, and orders history.",
                     "Refactored a whole suite of react components to use the hook pattern, reducing complexity, moving away from class components, removing boilerplate code, and reducing overall file size.",
                   ],
-                  technologies: "React, Typescript, NextJS, Redux, NodeJS",
+                  technologies: [
+                    "React",
+                    "Typescript",
+                    "NextJS",
+                    "Redux",
+                    "NodeJS",
+                  ],
                 },
                 {
                   role: "Systems Engineer Assoc",
@@ -298,7 +330,7 @@ export default function Home() {
                   description: [
                     "Designed and implemented new features for the Customer team inside autozone.com. Worked on the refactor of the profile page, reducing code complexity, making it mobile first and increasing overall load speed.",
                   ],
-                  technologies: "React, JavaScript, CSS",
+                  technologies: ["React", "JavaScript", "Redux", "NodeJS"],
                 },
                 {
                   role: "Software Developer",
@@ -309,8 +341,13 @@ export default function Home() {
                     "Helped to improve the frontend development flow related to code transpilation with webpack and linting enhancements for standardization.",
                     "Implemented and contributed to a proprietary React Component Library (based on Material UI) and integrated a complete proprietary Design System (which included a theme palette, images, and wording guides).",
                   ],
-                  technologies:
-                    "React, Typescript, ASP.Net MVC 5, SQL Server, Jenkins",
+                  technologies: [
+                    "React",
+                    "Typescript",
+                    "ASP.Net MVC 5",
+                    "SQL Server",
+                    "Jenkins",
+                  ],
                 },
                 {
                   role: "Software Developer",
@@ -320,7 +357,7 @@ export default function Home() {
                     "Implemented custom cloud-based tools for the business, based on AWS.",
                     "Developed a continuous Delivery Pipeline with 4 stages: Source, Build, Test and Deploy.",
                   ],
-                  technologies: "AWS, Laravel, MySQL",
+                  technologies: ["AWS", "Laravel", "MySQL"],
                 },
               ].map((job, index) => (
                 <div
@@ -328,7 +365,6 @@ export default function Home() {
                   className="mb-12 border-l-2 border-primary/50 pl-6"
                 >
                   <div className="relative">
-                    <div className="absolute -left-[30px] h-6 w-6 rounded-full bg-primary"></div>
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                       <h3 className="text-xl font-bold">{job.role}</h3>
                       <div className="flex items-center gap-2 text-muted-foreground">
@@ -348,9 +384,14 @@ export default function Home() {
                       ))}
                     </div>
                     <div className="mt-3">
-                      <Badge variant="outline" className="text-xs">
-                        Technologies: {job.technologies}
-                      </Badge>
+                      <span className="text-muted-foreground">
+                        Technologies:
+                      </span>
+                      {job.technologies.map((tech, i) => (
+                        <Badge key={i} variant="outline" className="ml-2">
+                          {tech}
+                        </Badge>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -429,7 +470,7 @@ export default function Home() {
                     "ASP.Net MVC",
                     "Java",
                     "REST APIs",
-                    "GraphQL",
+                    // "GraphQL",
                     "MongoDB",
                     "SQL Server",
                     "MySQL",
@@ -631,7 +672,7 @@ export default function Home() {
               <div className="mt-12">
                 <p className="text-muted-foreground">
                   <Phone className="mr-2 h-4 w-4 inline-block" />
-                  <span>+52 (222) 522 5414</span>
+                  <span>+52 222 522 5414</span>
                 </p>
               </div>
             </div>
