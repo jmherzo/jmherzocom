@@ -31,6 +31,7 @@ import {
 } from "lucide-react";
 
 export default function Home() {
+  // TODO FIX to avoid flicker
   const [theme, setTheme] = useState("light");
   const [copied, setCopied] = useState(false);
 
