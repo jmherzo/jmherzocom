@@ -7,9 +7,9 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Jesus Manuel Hernandez Zozaya | Senior Software Engineer",
+  title: "Jesus Manuel Hernandez Zozaya | Senior Software Engineer & Tech Lead",
   description:
-    "Personal portfolio of Jesus Manuel Hernandez Zozaya, a senior software engineer specialized in JavaScript, TypeScript, React and NodeJS",
+    "Senior Full Stack Engineer with 7+ years building high-scale consumer products. Specializing in React, TypeScript, GraphQL, and distributed frontend architecture.",
 };
 
 export default function RootLayout({

@@ -30,16 +30,25 @@ import {
   Contact,
 } from "lucide-react";
 
+const email = "jesus@jmherzo.com";
+
 export default function Home() {
   // TODO FIX to avoid flicker
   const [theme, setTheme] = useState("light");
   const [copied, setCopied] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   // Initialize theme from localStorage on component mount
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") || "light";
     setTheme(savedTheme);
     document.documentElement.classList.toggle("dark", savedTheme === "dark");
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   // Toggle theme function
@@ -52,14 +61,16 @@ export default function Home() {
 
   // Copy email function
   const copyEmail = () => {
-    navigator.clipboard.writeText("jesus.herzo@outlook.com");
+    navigator.clipboard.writeText(email);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
 
   return (
     <div className="flex min-h-screen flex-col">
-      <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <header
+        className={`fixed top-0 z-40 w-full transition-all duration-300 ${scrolled ? "border-b border-border/50 bg-background/60 backdrop-blur-xl shadow-sm" : "border-b border-transparent bg-transparent"}`}
+      >
         <div className="container flex h-16 items-center justify-between">
           <Link
             href="#hero"
@@ -130,6 +141,12 @@ export default function Home() {
                 <span className="sr-only">GitHub</span>
               </Button>
             </Link>
+            <Link href={`mailto:${email}`}>
+              <Button variant="ghost" size="icon">
+                <Mail className="h-4 w-4" />
+                <span className="sr-only">Email</span>
+              </Button>
+            </Link>
             <Button
               variant="ghost"
               size="icon"
@@ -148,55 +165,60 @@ export default function Home() {
       <main className="flex-1">
         <section
           id="hero"
-          className="relative overflow-hidden bg-muted/30 py-24 md:py-32"
+          className="relative min-h-screen flex items-center justify-center overflow-hidden"
         >
-          <div className="absolute inset-0 z-0 opacity-5">
-            <div className="absolute inset-0 bg-grid-pattern"></div>
-          </div>
-          <div className="container relative z-10">
+          {/* Gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-primary/10" />
+          {/* Decorative blurred orbs */}
+          <div className="absolute -top-40 -right-40 h-[500px] w-[500px] rounded-full bg-primary/10 blur-3xl" />
+          <div className="absolute -bottom-40 -left-40 h-[400px] w-[400px] rounded-full bg-primary/5 blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-primary/[0.03] blur-3xl" />
+          {/* Grid pattern */}
+          <div className="absolute inset-0 bg-grid-pattern opacity-[0.03]" />
+
+          <div className="container relative z-10 py-32 md:py-40">
             <div className="mx-auto max-w-4xl text-center">
-              {/* <Badge className="mb-4">Available for hire</Badge> */}
-              <h1 className="mb-6 text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-                Jesus Manuel Hernandez Zozaya
+              <Badge className="mb-6 px-4 py-1.5 text-sm" variant="outline">
+                Available for hire
+              </Badge>
+              <h1 className="mb-4 text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl bg-gradient-to-br from-foreground to-foreground/70 bg-clip-text text-transparent">
+                Jesus Manuel
               </h1>
-              <p className="mb-8 text-2xl font-medium text-primary">
-                Senior Software Engineer
-                <Link
-                  href="https://x.com/paypal"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="transition-colors hover:text-secondary"
-                >
-                  {" "}
-                  <span className="mb-8 text-2xl font-medium text-primary">
-                    @PayPal
-                  </span>
-                </Link>
+              <h1 className="mb-6 text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl bg-gradient-to-br from-primary to-primary/70 bg-clip-text text-transparent">
+                Hernandez Zozaya
+              </h1>
+              <div className="mx-auto mb-8 h-1 w-24 rounded-full bg-gradient-to-r from-primary/60 to-primary" />
+              <p className="mb-6 text-xl font-medium text-foreground/80 md:text-2xl">
+                Senior Software Engineer &middot; Tech Lead
               </p>
-              <p className="mx-auto mb-8 max-w-2xl text-xl text-muted-foreground">
-                Full Stack Developer proficient in JavaScript/TypeScript, React
-                and NodeJS with thorough knowledge of NextJS, Redux and backend
-                technologies.
+              <p className="mx-auto mb-10 max-w-2xl text-lg text-muted-foreground leading-relaxed">
+                7+ years building high-scale consumer products. Specializing in
+                React, TypeScript, GraphQL, and distributed frontend
+                architecture. Led cross-functional initiatives serving hundreds
+                of millions of users globally.
               </p>
               <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <Link
-                  href="#contact"
-                  className="text-sm font-medium transition-colors hover:text-primary"
-                >
-                  <Button size="lg" className="min-w-[160px]">
+                <Link href="#contact">
+                  <Button
+                    size="lg"
+                    className="min-w-[180px] shadow-lg shadow-primary/20"
+                  >
                     <Contact className="mr-2 h-5 w-5" /> Contact me
                   </Button>
                 </Link>
-
                 <Link href="#experience">
-                  <Button variant="outline" size="lg" className="min-w-[160px]">
-                    <User className="mr-2 h-5 w-5" /> Professional Experience
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="min-w-[180px] backdrop-blur-sm"
+                  >
+                    <User className="mr-2 h-5 w-5" /> Experience
                   </Button>
                 </Link>
               </div>
             </div>
           </div>
-          <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent"></div>
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
         </section>
 
         <section id="about" className="container py-16 md:py-24">
@@ -204,18 +226,16 @@ export default function Home() {
             About Me
           </h2>
           <div className="mx-auto max-w-3xl text-center">
-            <p className="mb-4 text-lg text-muted-foreground">
-              I define myself as a Senior Full Stack Software Engineer,
-              proficient in JavaScript/TypeScript, React and NodeJS; with
-              thorough knowledge of NextJS, Redux and backend technologies like
-              .Net, and Java. I have worked with Firebase, AWS and Google Cloud.
-            </p>
             <p className="text-lg text-muted-foreground">
-              {/* eslint-disable-next-line*/}
-              `I'm passionate about building scalable, performant web
-              applications with clean, maintainable code. My experience spans
-              from frontend development to backend services, with a focus on
-              creating exceptional user experiences.`
+              I&apos;m passionate about creating, maintaining and building scalable,
+              performant web applications with clean code. From architecting the
+              whole client interactions, all the way to service definition and
+              back end design. With a strong foundation in frontend development
+              and extensive experience across the full stack, I thrive at the
+              intersection of technical depth and product impact. I enjoy
+              leading teams, mentoring engineers, and collaborating with
+              cross-functional stakeholders to deliver high-quality products
+              that delight users and drive business success.
             </p>
           </div>
         </section>
@@ -273,16 +293,20 @@ export default function Home() {
                 {
                   role: "Senior Software Engineer (MTS 1)",
                   company: "PayPal",
-                  period: "Apr 2023 - Present",
+                  period: "Apr 2023 - Feb 2026",
                   description: [
-                    "Worked and architected new solutions for the Digital Wallet team within PayPal, which oversees adding cards, adding banks and transferring funds within PayPal globally.",
-                    "Created, with a multidisciplinary team, a new way to add a card on PayPal web, supporting all markets globally and giving the ability to any consumer team to add a card as a plug and play experience, increasing the performance by 2x and revamping the client-side architecture.",
-                    "Architected the APIs and client-side views for transferring funds on a new cross functional project called Money Pools, where customers could create pools of money to share with friends, winning new customers and bringing +30M on Total Payments Volume.",
+                    "Senior Full Stack Engineer and lead on the Digital Wallet team, overseeing card management, bank linking, and fund transfers related operations for PayPal's 400M+ global user base.",
+                    "Led the Digital Wallet team's integration into PayPal's federated super graph architecture, powering the next-generation iOS and Android app for 400M+ users. Drove adoption of a server-selected components pattern that reduced data-fetching latency by 2x, guiding 20+ engineers and team leads through the implementation.",
+                    "Engineered the GraphQL layer and Next.js UI flows for a confidential next-generation in-device wallet initiative targeting a tier 1 software company. Delivered the end-to-end card provisioning experience including security compliance flows with Visa and Mastercard.",
+                    "Architected the client-side and API layer for Money Pools, a cross-functional fund-sharing product that drove +$30M in Total Payment Volume.",
+                    "Co-led the rebuild of PayPal's global add card experience on web, delivering a plug-and-play architecture used across all markets with 2x performance improvement.",
                   ],
                   technologies: [
                     "React",
                     "Typescript",
                     "NextJS",
+                    "GraphQL",
+                    "Apollo",
                     "Redux",
                     "NodeJS",
                     "Jenkins",
@@ -349,16 +373,6 @@ export default function Home() {
                     "SQL Server",
                     "Jenkins",
                   ],
-                },
-                {
-                  role: "Software Developer",
-                  company: "Caribbean Sky Tours",
-                  period: "Aug 2017 - Jun 2018",
-                  description: [
-                    "Implemented custom cloud-based tools for the business, based on AWS.",
-                    "Developed a continuous Delivery Pipeline with 4 stages: Source, Build, Test and Deploy.",
-                  ],
-                  technologies: ["AWS", "Laravel", "MySQL"],
                 },
               ].map((job, index) => (
                 <div
@@ -449,7 +463,7 @@ export default function Home() {
                     "CSS/SCSS",
                     "Tailwind CSS",
                     "Material UI",
-                    "React Query",
+                    "Shadcn",
                     "TanStack Query",
                     "Styled Components",
                   ].map((skill) => (
@@ -471,7 +485,8 @@ export default function Home() {
                     "ASP.Net MVC",
                     "Java",
                     "REST APIs",
-                    // "GraphQL",
+                    "GraphQL",
+                    "Apollo",
                     "MongoDB",
                     "SQL Server",
                     "MySQL",
@@ -499,6 +514,7 @@ export default function Home() {
                     "CI/CD",
                     "Webpack",
                     "Agile/Scrum",
+                    "Vercel",
                     "Performance Optimization",
                     "Accessibility",
                     "Responsive Design",
@@ -530,10 +546,12 @@ export default function Home() {
             <div className="mt-12 text-center">
               <h3 className="mb-4 text-xl font-bold">Languages</h3>
               <div className="flex flex-wrap justify-center gap-4">
-                <Badge className="px-4 py-2 text-base">
+                <Badge className="px-4 py-2 text-base" variant="outline">
                   English C1 BULATS / 571 TOEFL
                 </Badge>
-                <Badge className="px-4 py-2 text-base">Spanish (Native)</Badge>
+                <Badge className="px-4 py-2 text-base" variant="outline">
+                  Spanish (Native)
+                </Badge>
               </div>
             </div>
           </div>
@@ -546,30 +564,51 @@ export default function Home() {
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {[
               {
-                title: "Embeddable Add Card",
+                title: "Brokxr",
                 description:
-                  "Created a new way to add a card on PayPal web, supporting all markets globally and giving the ability to any consumer team within PayPal to add a card as a plug and play experience.",
+                  "My own company project — founded, architected and built from the ground up a Full Stack insurtech platform to manage the complete policy lifecycle for insurance brokers. Designed a data access layer and DTO architecture to handle policy management, client tracking, prospect pipelines, renewal workflows, premium receipt generation, and multi-channel client communication.",
+                tags: [
+                  "Next.js",
+                  "Firebase",
+                  "Shadcn",
+                  "TanStack Query",
+                  "Vercel",
+                ],
+                link: "https://brokxr.com",
+              },
+              {
+                title: "Wallet into Federated Super Graph",
+                description:
+                  "Led the Digital Wallet team's integration into PayPal's federated super graph architecture, powering the next-generation mobile app for 400M+ users. Drove adoption of a server-selected components pattern that reduced data-fetching latency by 2x.",
+                tags: ["GraphQL", "Apollo", "React", "TypeScript"],
+              },
+              {
+                title: "PayPal Global Add Card",
+                description:
+                  "Co-led the rebuild of PayPal's global add card experience on web, delivering a plug-and-play architecture used across all markets with 2x performance improvement.",
                 tags: ["React", "TypeScript", "NextJS", "Redux"],
-              },
-              {
-                title: "MoneyPools",
-                description:
-                  "Architected the APIs and client-side views for transferring funds on a new cross functional project called Money Pools, where customers could create pools of money to share with friends.",
-                tags: ["React", "TypeScript", "NodeJS", "APIs"],
-              },
-              {
-                title: "COSESY",
-                description:
-                  "Created a real-time Cow Sensing System that monitored the activity of a cow. Developed the backend using NodeJS and MongoDB; frontend using AngularJS.",
-                tags: ["NodeJS", "MongoDB", "AngularJS", "Socket.io", "AWS"],
               },
             ].map((project, index) => (
               <Card
                 key={index}
-                className="overflow-hidden transition-all duration-300 hover:shadow-lg"
+                className="flex flex-col overflow-hidden transition-all duration-300 hover:shadow-lg"
               >
-                <CardHeader>
-                  <CardTitle>{project.title}</CardTitle>
+                <CardHeader className="flex-1">
+                  <div className="flex min-h-[36px] items-center justify-between gap-2">
+                    <CardTitle>{project.title}</CardTitle>
+                    {"link" in project && project.link && (
+                      <Link
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="shrink-0"
+                      >
+                        <Button variant="outline" size="sm">
+                          <ExternalLink className="mr-1 h-3 w-3" /> Visit
+                        </Button>
+                      </Link>
+                    )}
+                  </div>
                   <CardDescription>{project.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -602,9 +641,7 @@ export default function Home() {
                 <Card className="flex flex-col items-center p-6 transition-all hover:shadow-md">
                   <Mail className="mb-4 h-10 w-10 text-primary" />
                   <h3 className="mb-2 text-lg font-bold">Email</h3>
-                  <p className="mb-4 text-sm text-muted-foreground">
-                    jesus.herzo@outlook.com
-                  </p>
+                  <p className="mb-4 text-sm text-muted-foreground">{email}</p>
                   <Button
                     variant="outline"
                     size="sm"
@@ -669,59 +706,18 @@ export default function Home() {
                   </Button>
                 </Card>
               </div>
-
-              <div className="mt-12">
-                <p className="text-muted-foreground">
-                  <Phone className="mr-2 h-4 w-4 inline-block" />
-                  <span>+52 222 522 5414</span>
-                </p>
-              </div>
             </div>
           </div>
         </section>
       </main>
       <footer className="border-t py-6 md:py-8">
-        <div className="container flex flex-col items-center justify-between gap-4 md:flex-row">
-          <div className="flex items-center gap-2">
-            <Code className="h-5 w-5" />
-            <span className="text-sm font-medium">
-              Jesus Manuel Hernandez Zozaya
-            </span>
-          </div>
+        <div className="container flex flex-col items-center justify-center gap-4 md:flex-row">
           <p className="text-center text-sm text-muted-foreground md:text-left">
             &copy; {new Date().getFullYear()} Jesus Manuel Hernandez Zozaya. All
             rights reserved.
           </p>
-          <div className="flex gap-4">
-            <Link href="mailto:jesus.herzo@outlook.com">
-              <Button variant="ghost" size="icon">
-                <Mail className="h-4 w-4" />
-                <span className="sr-only">Email</span>
-              </Button>
-            </Link>
-          </div>
         </div>
       </footer>
     </div>
-  );
-}
-
-// eslint-disable-next-line
-function Phone(props: any) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-    </svg>
   );
 }
