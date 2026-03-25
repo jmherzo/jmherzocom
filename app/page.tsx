@@ -227,12 +227,12 @@ export default function Home() {
           </h2>
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-lg text-muted-foreground">
-              I&apos;m passionate about creating, maintaining and building scalable,
-              performant web applications with clean code. From architecting the
-              whole client interactions, all the way to service definition and
-              back end design. With a strong foundation in frontend development
-              and extensive experience across the full stack, I thrive at the
-              intersection of technical depth and product impact. I enjoy
+              I am passionate about building, maintaining, and scaling
+              performant web applications with clean code. My work spans the
+              entire lifecycle—from architecting client-side interactions to
+              service definition and backend design. With a strong foundation in
+              frontend development and extensive full-stack experience, I thrive
+              at the intersection of technical depth and product impact. I enjoy
               leading teams, mentoring engineers, and collaborating with
               cross-functional stakeholders to deliver high-quality products
               that delight users and drive business success.
