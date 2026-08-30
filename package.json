@@ -12,14 +12,9 @@
     "start": "next start",
     "lint": "next lint",
     "resume:check": "node scripts/check-resume-sync.mjs",
-    "qa:responsive": "node scripts/qa/responsive.mjs",
-    "qa:a11y": "node scripts/qa/a11y.mjs",
-    "qa:keyboard": "node scripts/qa/keyboard.mjs",
-    "qa:menu": "node scripts/qa/menu.mjs",
-    "qa:verify": "node scripts/qa/verify.mjs",
-    "qa:html": "html-validate --config .htmlvalidate.json .next/server/app/index.html",
-    "qa:header": "node scripts/qa/header.mjs",
-    "qa:console": "node scripts/qa/console.mjs"
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:html": "html-validate --config .htmlvalidate.json .next/server/app/index.html"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",
@@ -33,6 +28,7 @@
     "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.62.1",
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -41,7 +37,6 @@
     "eslint": "^9.21.0",
     "eslint-config-next": "^15.5.24",
     "html-validate": "^11.10.0",
-    "playwright": "^1.62.1",
     "postcss": "^8.5.18",
     "tailwindcss": "^3.4.17",
     "tailwindcss-animate": "^1.0.7",
