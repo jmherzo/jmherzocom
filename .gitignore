@@ -38,3 +38,5 @@ yarn-error.log*
 *.tsbuildinfo
 
 certificates
+# Private CV data (contact details + local path to the Word master)
+data/resume.private.json

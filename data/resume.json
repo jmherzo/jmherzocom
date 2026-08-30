@@ -1,0 +1,272 @@
+{
+  "$comment": "SINGLE SOURCE OF TRUTH. Superset of every fact. Renderers project subsets of it.",
+  "$targets": {
+    "cv": "Included in the one-page Word CV. Keep this set tight - it must fit one page.",
+    "web": "Included on jmherzo.com and in the public /resume.json."
+  },
+  "meta": {
+    "version": "3.0.0",
+    "lastVerified": "2026-08-27",
+    "cvSourceNote": "Local path to the Word master lives in data/resume.private.json (gitignored)."
+  },
+  "basics": {
+    "name": "Jesus Manuel Hernandez Zozaya",
+    "label": "Staff Software Engineer",
+    "email": "jesus@jmherzo.com",
+    "location": {
+      "city": "Puebla",
+      "countryCode": "MX"
+    },
+    "url": "https://jmherzo.com",
+    "headline": "8+ years building high-scale consumer products. Staff-level ownership across architecture, design review, and the people side of shipping.",
+    "summaryCv": "Staff Software Engineer with 8+ years building high-scale consumer products at Gigantic Playground, PayPal and AutoZone. Leads through both architecture and people - owning systems end to end, running high-level design reviews, mentoring engineers, and aligning stakeholders from product and design through director level.",
+    "summary": "Staff Software Engineer with 8+ years building high-scale consumer products at Gigantic Playground, PayPal and AutoZone. I own systems end to end - from event taxonomy and data models through GraphQL layers and the client-side architecture on top of them. I lead through both architecture and people: running high-level design reviews, mentoring engineers, and aligning stakeholders from product and design through director level. Outside of that I founded and built Brokxr, a full-stack insurtech platform, from the ground up.",
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "jmherzo",
+        "url": "https://linkedin.com/in/jmherzo/"
+      },
+      {
+        "network": "GitHub",
+        "username": "jmherzo",
+        "url": "https://github.com/jmherzo"
+      }
+    ]
+  },
+  "work": [
+    {
+      "company": "Gigantic Playground",
+      "position": "Staff Software Engineer",
+      "startDate": "2026-05",
+      "endDate": null,
+      "summary": "Technical owner of the analytics platform, leading architecture, design review, and delivery for the Fleet Platform System.",
+      "highlights": [
+        {
+          "text": "Architected the company's first analytics platform from the ground up - event taxonomy, ingestion pipeline, data model, and reporting layer - turning open-ended business questions from leadership into a durable technical foundation.",
+          "targets": ["cv", "web"]
+        },
+        {
+          "text": "Authored the high-level design and drove it through formal HLD review with engineering and business stakeholders, establishing the design-review bar the team now follows and de-risking scope before implementation started.",
+          "targets": ["cv", "web"]
+        },
+        {
+          "text": "Owned stakeholder alignment across the organization - gathering requirements from product and business owners, negotiating priorities, and communicating tradeoffs and progress to non-technical audiences.",
+          "targets": ["cv", "web"]
+        }
+      ],
+      "technologies": ["AWS", "BrightSignOS", "HTML", "JS"],
+      "url": "https://giganticplayground.com/"
+    },
+    {
+      "company": "PayPal",
+      "position": "Member of Technical Staff 1",
+      "startDate": "2023-04",
+      "endDate": "2026-02",
+      "summary": "Member of Technical Staff and lead on the Digital Wallet team, overseeing card management, bank linking, and fund transfers related operations for PayPal's 400M+ global user base.",
+      "highlights": [
+        {
+          "text": "Led the Digital Wallet team's integration into PayPal's federated super graph architecture, powering the next-generation iOS and Android app for 400M+ users. Served as team focal point across principal architects, directors, product, and design. Drove adoption of a server-selected components pattern that reduced data-fetching latency by 2x, guiding 20+ engineers and team leads through the implementation.",
+          "targets": ["cv", "web"]
+        },
+        {
+          "text": "Engineered the GraphQL layer and Next.js UI flows for a confidential next-generation in-device wallet initiative targeting a tier 1 software company. Delivered the end-to-end card provisioning experience including security compliance flows with Visa and Mastercard, enabling users to add and manage cards within the device wallet.",
+          "targets": ["cv", "web"]
+        },
+        {
+          "text": "Co-led the rebuild of PayPal's global card-add experience on web, delivering a plug-and-play architecture used across all markets with 2x performance improvement.",
+          "cvText": "Co-led the rebuild of PayPal's global card-add experience on web, delivering a plug-and-play architecture.",
+          "targets": ["cv", "web"]
+        },
+        {
+          "text": "Architected the client-side and API layer for Money Pools, a cross-functional fund-sharing product that drove +$30M in Total Payment Volume.",
+          "targets": ["web"]
+        }
+      ],
+      "technologies": [
+        "React",
+        "TypeScript",
+        "NextJS",
+        "GraphQL",
+        "Apollo",
+        "Redux",
+        "NodeJS",
+        "Jenkins",
+        "GitHub"
+      ],
+      "url": "https://www.paypal.com"
+    },
+    {
+      "company": "AutoZone",
+      "position": "Front End Tech Lead",
+      "startDate": "2021-03",
+      "endDate": "2023-04",
+      "summary": "Owned frontend engineering decisions for the Customer team on autozone.com - architecture of new features, release planning, and stakeholder communication.",
+      "highlights": [
+        {
+          "text": "Designed and developed with the customer team, the frontend implementation of the key products recommendation feature inside a product details page. This feature increased weekly sales by 20%.",
+          "targets": ["cv", "web"]
+        }
+      ],
+      "technologies": [
+        "React",
+        "TypeScript",
+        "NextJS",
+        "Redux",
+        "NodeJS",
+        "TanStack Query",
+        "Jenkins",
+        "GitLab"
+      ],
+      "url": "https://www.autozone.com"
+    },
+    {
+      "company": "AutoZone",
+      "position": "Systems Engineer / Assoc",
+      "startDate": "2020-08",
+      "endDate": "2023-04",
+      "summary": "Built and enhanced complex frontend flows for autozone.com across sign in, create account, rewards program, and orders history, and led the profile page refactor - reducing code complexity, making it mobile first, and increasing load speed.",
+      "highlights": [
+        {
+          "text": "Refactored a whole suite of react components to use the hook pattern, reducing complexity, moving away from class components, removing boilerplate code, and reducing overall file size.",
+          "targets": ["cv", "web"]
+        }
+      ],
+      "technologies": ["React", "TypeScript", "NextJS", "Redux", "NodeJS"],
+      "url": "https://www.autozone.com"
+    },
+    {
+      "company": "Ellucian",
+      "position": "Software Developer",
+      "startDate": "2018-06",
+      "endDate": "2020-08",
+      "summary": "Built custom UI interfaces and backend services for web-based applications.",
+      "highlights": [
+        {
+          "text": "Implemented and contributed to a proprietary React Component Library (based on Material UI) and integrated a complete proprietary Design System, which included a theme palette, images, and wording guides.",
+          "cvText": "Implemented and contributed to a proprietary React Component Library (based on Material UI) and integrated a complete proprietary Design System",
+          "targets": ["cv", "web"]
+        },
+        {
+          "text": "Helped improve the frontend development flow around code transpilation with webpack and linting enhancements for standardization.",
+          "targets": ["web"]
+        }
+      ],
+      "technologies": [
+        "React",
+        "TypeScript",
+        "ASP.Net MVC 5",
+        "SQL Server",
+        "Jenkins"
+      ],
+      "url": "https://www.ellucian.com"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Brokxr",
+      "featured": true,
+      "startDate": "2025-01",
+      "endDate": null,
+      "url": "https://brokxr.com",
+      "tagline": "A full-stack insurtech platform for insurance brokers, founded and built solo.",
+      "summaryCv": "My own company project - founded, architected and built from the ground up a Full Stack insurtech platform managing the complete policy lifecycle for insurance brokers: policy management, client and prospect pipelines, renewal workflows, premium receipts, and multi-channel client communication.",
+      "summary": "My own company project - founded, architected and built from the ground up. Brokxr manages the complete policy lifecycle for insurance brokers, a workflow that most of the market still runs on spreadsheets and WhatsApp.",
+      "highlights": [
+        {
+          "text": "Designed a data access layer and DTO architecture that keeps the domain model clean across policy management, client tracking, and prospect pipelines.",
+          "targets": ["web"]
+        },
+        {
+          "text": "Built renewal workflows and premium receipt generation - the two operations brokers spend the most manual time on.",
+          "targets": ["web"]
+        },
+        {
+          "text": "Multi-channel client communication so brokers reach clients where they already are.",
+          "targets": ["web"]
+        },
+        {
+          "text": "Owns the whole stack: schema design, auth, business logic, UI, and deploys.",
+          "targets": ["web"]
+        }
+      ],
+      "technologies": [
+        "Next.js",
+        "Firebase",
+        "Shadcn",
+        "TanStack Query",
+        "Vercel"
+      ],
+      "targets": ["cv", "web"]
+    },
+    {
+      "name": "Wallet into Federated Super Graph",
+      "featured": false,
+      "context": "PayPal",
+      "summary": "Led the Digital Wallet team's integration into PayPal's federated super graph architecture, powering the next-generation mobile app for 400M+ users. Drove adoption of a server-selected components pattern that reduced data-fetching latency by 2x.",
+      "technologies": ["GraphQL", "Apollo", "React", "TypeScript"],
+      "targets": ["web"]
+    },
+    {
+      "name": "PayPal Global Add Card",
+      "featured": false,
+      "context": "PayPal",
+      "summary": "Co-led the rebuild of PayPal's global add card experience on web, delivering a plug-and-play architecture used across all markets with 2x performance improvement.",
+      "technologies": ["React", "TypeScript", "NextJS", "Redux"],
+      "targets": ["web"]
+    }
+  ],
+  "skills": [
+    {
+      "category": "Core",
+      "items": ["TypeScript", "JavaScript", "HTML", "CSS/SCSS"]
+    },
+    {
+      "category": "Frontend",
+      "items": [
+        "React",
+        "Next.js",
+        "Redux",
+        "TanStack Query",
+        "Tailwind CSS",
+        "Shadcn"
+      ]
+    },
+    {
+      "category": "Backend & Data",
+      "items": [
+        "Node.js",
+        "GraphQL",
+        "Apollo",
+        "REST APIs",
+        "Firebase",
+        "SQL Server",
+        "MongoDB"
+      ]
+    },
+    {
+      "category": "Platform",
+      "items": ["AWS", "Vercel", "Jenkins", "CI/CD", "Git"]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Instituto Tecnologico y de Estudios Superiores de Monterrey (ITESM)",
+      "studyType": "B.S.",
+      "area": "Robotics and Digital Systems Engineering",
+      "endDate": "2017",
+      "score": "GPA: 95/100",
+      "note": "Graduated with honorable mention of excellence in 2017"
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "C1 BULATS / 571 TOEFL"
+    },
+    {
+      "language": "Spanish",
+      "fluency": "Native"
+    }
+  ]
+}

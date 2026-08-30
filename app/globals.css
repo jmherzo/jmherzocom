@@ -58,6 +58,22 @@
   }
   html {
     scroll-behavior: smooth;
+    /* The header is fixed at 4rem, so an anchor jump would otherwise land the
+       section heading underneath it. */
+    scroll-padding-top: 5rem;
+  }
+  /* Respect users who ask the OS for less motion. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
@@ -69,4 +85,53 @@
     ),
     linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
   background-size: 20px 20px;
+}
+
+/*
+  Header dim-on-scroll, done in CSS rather than a React scroll listener.
+
+  The resting state (below) is the dimmed one, so browsers without
+  scroll-driven animation support get a permanently readable header instead of
+  a transparent bar over the content. Where `animation-timeline: scroll()` is
+  supported the header starts fully transparent at the top of the page and
+  dims in over the first 64px of scroll. The animation is paused while the
+  mobile menu is open, since the panel needs an opaque backdrop at any offset.
+*/
+.site-header {
+  background-color: hsl(var(--background) / 0.85);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom-color: hsl(var(--border) / 0.5);
+  box-shadow:
+    0 1px 2px -1px hsl(var(--foreground) / 0.08),
+    0 1px 3px hsl(var(--foreground) / 0.06);
+}
+
+@keyframes site-header-dim {
+  from {
+    background-color: hsl(var(--background) / 0);
+    -webkit-backdrop-filter: blur(0px);
+    backdrop-filter: blur(0px);
+    border-bottom-color: hsl(var(--border) / 0);
+    box-shadow:
+      0 1px 2px -1px hsl(var(--foreground) / 0),
+      0 1px 3px hsl(var(--foreground) / 0);
+  }
+  to {
+    background-color: hsl(var(--background) / 0.85);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-bottom-color: hsl(var(--border) / 0.5);
+    box-shadow:
+      0 1px 2px -1px hsl(var(--foreground) / 0.08),
+      0 1px 3px hsl(var(--foreground) / 0.06);
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  .site-header:not([data-menu-open="true"]) {
+    animation: site-header-dim linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 64px;
+  }
 }

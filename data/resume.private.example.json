@@ -1,0 +1,6 @@
+{
+  "$comment": "Copy to resume.private.json and fill in. That file is gitignored - it holds CV-only contact details and the local path to the Word master, none of which belong in a public repo or a client bundle.",
+  "cvSource": "/absolute/path/to/Your CV.docx",
+  "emailCv": "you@example.com",
+  "phoneCv": "+00 (000) 000 0000"
+}
